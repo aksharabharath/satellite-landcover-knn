@@ -14,6 +14,24 @@ The model classifies images into three categories:
 
 ---
 
+## Dataset
+
+This project uses the EuroSAT RGB dataset.
+
+Download it from:
+https://github.com/phelber/EuroSAT
+
+After downloading, place the images here:
+
+data/
+└── raw/
+    └── eurosat_subset/
+        ├── Forest/
+        ├── River/
+        └── Residential/
+
+--
+
 ## Project Workflow
 
 The project follows a complete machine learning pipeline:
