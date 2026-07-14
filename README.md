@@ -1,20 +1,64 @@
+````markdown
 # Satellite Land Cover Classification using K-Nearest Neighbors (KNN)
 
-A machine learning project that classifies satellite images into **Forest**, **River**, and **Residential** land cover types using engineered RGB image features and a K-Nearest Neighbors (KNN) classifier.
+A complete machine learning application that classifies satellite images into **Forest**, **River**, and **Residential** land cover types using engineered RGB image features and a K-Nearest Neighbors (KNN) classifier.
+
+The project includes an interactive desktop application built with **Tkinter**, allowing users to upload satellite images and receive real-time land cover predictions.
 
 **Final Model Accuracy:** **96.76%**
 
 ---
 
+# Application Demo
+
+## Home Screen
+
+![Home Screen](images/app_home.png)
+
+## Uploading an Image
+
+![Image Upload](images/app_upload.png)
+
+## Example Prediction
+
+![Prediction Example](images/app_prediction_forest.png)
+
+The application displays:
+
+- Uploaded satellite image
+- Predicted land cover class
+- Confidence score
+- Human-friendly class description
+- Model information
+
+---
+
 # Project Overview
 
-Satellite imagery plays an important role in environmental monitoring, urban planning, agriculture, and disaster management. In this project, I built a complete machine learning pipeline to classify satellite images into three land cover categories:
+Satellite imagery plays an important role in environmental monitoring, urban planning, agriculture, and disaster management.
 
-* Forest
-* River
-* Residential
+This project demonstrates a complete end-to-end machine learning workflow:
 
-Rather than using deep learning, this project focuses on understanding the fundamentals of machine learning through feature engineering, data preprocessing, model training, and evaluation.
+- Image preprocessing
+- Feature engineering
+- Model training
+- Hyperparameter tuning
+- Performance evaluation
+- Desktop application deployment
+
+Rather than using deep learning, this project focuses on applying traditional machine learning techniques and understanding how image features can be engineered for classification tasks.
+
+---
+
+# Features
+
+- Desktop GUI built with Tkinter
+- Upload and classify satellite images
+- K-Nearest Neighbors (KNN) classifier
+- Confidence score for every prediction
+- Human-readable land cover descriptions
+- RGB feature engineering pipeline
+- Reproducible machine learning workflow
 
 ---
 
@@ -33,7 +77,7 @@ data/
         ├── Forest/
         ├── River/
         └── Residential/
-```
+````
 
 The processed feature dataset generated during preprocessing is included in:
 
@@ -41,15 +85,15 @@ The processed feature dataset generated during preprocessing is included in:
 data/processed/satellite_landcover_features.csv
 ```
 
-## Sample Images
+---
 
-Below are example satellite images from each land cover class.
+# Sample Images
 
 ![Sample Images](images/sample_images.png)
 
 ---
 
-# Project Workflow
+# Machine Learning Workflow
 
 ```text
 Satellite Images
@@ -58,8 +102,7 @@ Satellite Images
 Data Exploration
         │
         ▼
-Feature Extraction
-(RGB Means, Standard Deviations, Brightness)
+Feature Engineering
         │
         ▼
 Processed Dataset
@@ -74,30 +117,30 @@ K-Nearest Neighbors (K = 5)
 Model Evaluation
         │
         ▼
-Predict New Satellite Images
+Desktop Prediction Application
 ```
 
 ---
 
 # Feature Engineering
 
-Each **64 × 64 RGB satellite image** was converted into numerical features suitable for machine learning.
+Each **64 × 64 RGB satellite image** was transformed into numerical features suitable for traditional machine learning.
 
 Extracted features include:
 
-* Mean Red value
-* Mean Green value
-* Mean Blue value
-* Standard deviation of the Red channel
-* Standard deviation of the Green channel
-* Standard deviation of the Blue channel
-* Overall image brightness
+* Mean Red
+* Mean Green
+* Mean Blue
+* Standard Deviation (Red)
+* Standard Deviation (Green)
+* Standard Deviation (Blue)
+* Overall Brightness
 
-These engineered features transformed every image into a numerical representation that could be used by a traditional machine learning model.
+These engineered features allow KNN to distinguish between different land cover classes without using deep learning.
 
-## Feature Distribution
+---
 
-The engineered RGB features create separable clusters that allow the KNN classifier to distinguish between different land cover classes.
+# Feature Distribution
 
 ![Feature Distribution](images/feature_distribution.png)
 
@@ -116,7 +159,7 @@ The engineered RGB features create separable clusters that allow the KNN classif
 
 ## Hyperparameter Tuning
 
-To determine the optimal number of neighbors, the model was evaluated using multiple values of **K**:
+The model was evaluated using:
 
 * K = 1
 * K = 3
@@ -127,7 +170,9 @@ To determine the optimal number of neighbors, the model was evaluated using mult
 
 The highest testing accuracy was achieved with **K = 5**.
 
-## K Value Comparison
+---
+
+# K Value Comparison
 
 ![K Value Accuracy](images/k_value_accuracy.png)
 
@@ -135,27 +180,21 @@ The highest testing accuracy was achieved with **K = 5**.
 
 # Results
 
-## Confusion Matrix
+## Overall Test Accuracy
 
-The confusion matrix summarizes the model's performance on the testing dataset.
+**96.76%**
+
+### Confusion Matrix
 
 ![Confusion Matrix](images/confusion_matrix.png)
 
-## Example Prediction
-
-The trained model successfully predicts the land cover class of an unseen satellite image.
-
-![Prediction Example](images/prediction_example.png)
-
-## Classification Report
+### Classification Report
 
 | Class       | Precision | Recall | F1 Score |
-| ----------- | --------: | -----: | -------: |
+| :---------- | --------: | -----: | -------: |
 | Forest      |      0.99 |   1.00 |     0.99 |
 | Residential |      0.94 |   0.98 |     0.96 |
 | River       |      0.97 |   0.91 |     0.94 |
-
-**Overall Test Accuracy:** **96.76%**
 
 ---
 
@@ -166,17 +205,12 @@ The trained model successfully predicts the land cover class of an unseen satell
 * Pandas
 * Pillow (PIL)
 * Matplotlib
-* Seaborn
 * Scikit-learn
+* Tkinter
+* Joblib
 * Jupyter Notebook
 * Git
 * GitHub
-
-## Dataset Distribution
-
-The dataset contains three land cover categories.
-
-![Dataset Distribution](images/class_distribution.png)
 
 ---
 
@@ -185,13 +219,9 @@ The dataset contains three land cover categories.
 ```text
 satellite-landcover-knn/
 │
-├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── images/
-│
-├── models/
+├── app.py
+├── src/
+│   └── landcover/
 │
 ├── notebooks/
 │   ├── 01_data_exploration.ipynb
@@ -199,32 +229,49 @@ satellite-landcover-knn/
 │   ├── 03_model_training.ipynb
 │   └── 04_model_analysis.ipynb
 │
-├── README.md
-└── requirements.txt
+├── data/
+├── models/
+├── images/
+├── outputs/
+│
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
 # Future Improvements
 
-Possible future extensions include:
-
-* Expanding the model to classify all EuroSAT land cover categories.
-* Comparing KNN with Decision Trees, Random Forests, and Support Vector Machines.
-* Training a Convolutional Neural Network (CNN) directly on image pixels.
-* Exploring FAISS for scalable nearest-neighbor search on larger image datasets.
+* Expand the classifier to all EuroSAT land cover categories.
+* Compare KNN with Random Forests, Decision Trees, and Support Vector Machines.
+* Train a Convolutional Neural Network (CNN).
+* Display probability charts directly inside the application.
+* Add drag-and-drop image support.
+* Package the application as a standalone desktop executable.
 
 ---
 
 # Key Takeaways
 
-This project demonstrates the complete machine learning workflow:
+This project demonstrates the complete lifecycle of a machine learning application:
 
 * Data exploration
 * Image feature engineering
 * Data preprocessing
 * Model training
 * Hyperparameter tuning
-* Performance evaluation
-* Prediction on unseen satellite images
-* Building a reproducible machine learning project using Git and GitHub
+* Model evaluation
+* Saving and loading trained models
+* Building a desktop GUI for real-time predictions
+* Version control with Git and GitHub
+
+---
+
+# Author
+
+**Akshara Bharath**
+
+High school student passionate about machine learning, remote sensing, and Earth observation.
+
+GitHub: https://github.com/aksharabharath
+
