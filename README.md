@@ -1,4 +1,3 @@
-````markdown
 # Satellite Land Cover Classification using K-Nearest Neighbors (KNN)
 
 A complete machine learning application that classifies satellite images into **Forest**, **River**, and **Residential** land cover types using engineered RGB image features and a K-Nearest Neighbors (KNN) classifier.
