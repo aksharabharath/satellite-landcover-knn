@@ -20,7 +20,9 @@ The project includes an interactive desktop application built with **Tkinter**, 
 
 ## Example Prediction
 
-![Prediction Example](images/app_prediction_forest.png)
+![Prediction Example](images/app_prediction.png)
+![Prediction Example](images/app_prediction1.png)
+
 
 The application displays:
 
